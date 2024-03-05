@@ -1,0 +1,52 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name : Terraform AZURE VNET PEERING
+
+# License of this project
+license: "MIT"
+
+# Canonical GitHub repo
+github_repo: git@github.com:slovink/terraform-azure-vnet-Peering.git
+
+# Badges to display
+badges:
+  - name: "Terraform"
+    image: "https://img.shields.io/badge/Terraform-v1.7.4-green"
+    url: "https://www.terraform.io"
+  - name: "Licence"
+    image: "https://img.shields.io/badge/License-MIT-blue.svg"
+    url: "https://github.com/slovink/terraform-azure-vnet/blob/master/LICENSE"
+
+#  description of this project
+description: |-
+  Terraform module to create Azure vnet-peering service resource on AZURE.
+# extra content
+include:
+  - "terraform.md"
+
+# How to use this project
+# How to use this project
+usage: |-
+  Here are some examples of how you can use this module in your inventory structure:
+  ### azure vnet peering
+  ```hcl
+    # Basic
+
+   module "vnet_peering" {
+    source                        = "../.."
+    enabled_diff_subs_peering     = true
+    resource_group_1_name         = module.resource_group.resource_group_name
+    diff_subs_resource_group_name = data.azurerm_resource_group.resource_group_1.name
+    alias_subs_id                 = "0a7be846-xxxxxxxxxxxxxx98787h"
+    vnet_1_name                   = module.vnet.name
+    vnet_1_id                     = module.vnet.id
+    net_diff_subs_name           = data.azurerm_virtual_network.mgmt-staging-vnet.name
+    vnet_diff_subs_id             = data.azurerm_virtual_network.mgmt-staging-vnet.id
+  }
+  ````
+
